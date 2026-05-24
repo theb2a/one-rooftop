@@ -1,8 +1,8 @@
-﻿images/
-email-client.md
+﻿email-client.md
 design.webp
 design.jpg
 *.psd
 .DS_Store
 node_modules/
 .env
+google-to-mockup/
