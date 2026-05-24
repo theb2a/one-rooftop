@@ -1,0 +1,1488 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>One Rooftop — Bar & Kitchen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Cinzel:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --crimson:   #7a1a1a;
+      --crimson-deep: #5a1010;
+      --gold:      #c8974a;
+      --gold-light:#e8c07a;
+      --cream:     #f5f0e8;
+      --off-white: #faf7f2;
+      --dark:      #0e0a08;
+      --dark-mid:  #1a1008;
+      --charcoal:  #2a2018;
+      --text-muted:#9e8e78;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      background: var(--off-white);
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+
+    /* ═══════════════════════════════════════════
+       NAVIGATION
+    ═══════════════════════════════════════════ */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2.5rem;
+      height: 64px;
+      background: rgba(14, 10, 8, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(200, 151, 74, 0.2);
+    }
+
+    .nav-hamburger {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 8px;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--cream);
+      transition: all 0.3s;
+    }
+
+    .nav-logo {
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.25em;
+      color: var(--cream);
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    .nav-logo span {
+      color: var(--gold);
+    }
+
+    .nav-reservation {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      border: 1px solid var(--gold);
+      padding: 8px 20px;
+      transition: all 0.3s;
+    }
+    .nav-reservation:hover {
+      background: var(--gold);
+      color: var(--dark);
+    }
+
+    /* ═══════════════════════════════════════════
+       HERO
+    ═══════════════════════════════════════════ */
+    .hero {
+      min-height: 100vh;
+      background: var(--crimson);
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      padding: 0;
+    }
+
+    .hero-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 88px 2.5rem 0;
+    }
+    .hero-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,0.6);
+      line-height: 1.8;
+    }
+    .hero-label em {
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--gold-light);
+      display: block;
+      letter-spacing: 0.05em;
+    }
+
+    .hero-center {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 2.5rem;
+      min-height: 520px;
+    }
+
+    /* Big background title */
+    .hero-title-bg {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(80px, 14vw, 180px);
+      line-height: 0.9;
+      color: rgba(245,240,232,0.08);
+      pointer-events: none;
+      user-select: none;
+      letter-spacing: -0.02em;
+      padding-bottom: 0;
+    }
+
+    /* Photo collage */
+    .hero-collage {
+      position: relative;
+      width: 100%;
+      max-width: 720px;
+      height: 420px;
+    }
+
+    .hero-photo {
+      position: absolute;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-photo-1 {
+      width: 200px; height: 240px;
+      top: 40px; left: 0;
+    }
+    .hero-photo-2 {
+      width: 260px; height: 300px;
+      top: 0; left: 160px;
+    }
+    .hero-photo-3 {
+      width: 290px; height: 360px;
+      top: 20px; right: 0;
+    }
+    .hero-photo-thumb {
+      width: 100px; height: 100px;
+      bottom: 10px; left: 60px;
+      z-index: 5;
+    }
+
+    /* Overlaid title on collage */
+    .hero-title-overlay {
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      right: 0;
+      pointer-events: none;
+      z-index: 10;
+    }
+    .hero-title-overlay h1 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(60px, 10vw, 130px);
+      line-height: 0.92;
+      color: var(--cream);
+      letter-spacing: -0.02em;
+    }
+    .hero-title-overlay h1 .line2 {
+      color: var(--cream);
+      margin-left: 1.2em;
+    }
+
+    /* Book now button */
+    .book-now-circle {
+      position: absolute;
+      bottom: 40px;
+      right: 20px;
+      z-index: 20;
+      width: 100px; height: 100px;
+      border-radius: 50%;
+      background: var(--cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      color: var(--crimson-deep);
+      text-decoration: none;
+      text-transform: uppercase;
+      font-weight: 500;
+      transition: transform 0.3s, background 0.3s;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+    }
+    .book-now-circle:hover {
+      transform: scale(1.08) rotate(5deg);
+      background: var(--gold-light);
+    }
+
+    /* EST badge */
+    .hero-est {
+      position: absolute;
+      bottom: 80px;
+      left: 2.5rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,0.5);
+      line-height: 1.8;
+    }
+
+    .hero-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding: 1.5rem 2.5rem 2rem;
+      border-top: 1px solid rgba(245,240,232,0.15);
+    }
+    .hero-copy {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,0.4);
+    }
+    .hero-lang {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,0.5);
+    }
+    .hero-lang svg { opacity: 0.4; }
+
+    /* ═══════════════════════════════════════════
+       ABOUT
+    ═══════════════════════════════════════════ */
+    .about {
+      padding: 100px 2.5rem 80px;
+      background: var(--off-white);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+
+    .about-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .about-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      padding-top: 0.5rem;
+    }
+
+    .about-content {}
+    .about-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.35;
+      color: var(--dark);
+      margin-bottom: 2rem;
+      max-width: 700px;
+    }
+    .about-headline strong {
+      font-style: normal;
+      font-weight: 700;
+    }
+
+    .about-read-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--crimson);
+      color: var(--cream);
+      padding: 6px 18px;
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-family: 'Cinzel', serif;
+      transition: background 0.3s;
+      vertical-align: middle;
+      margin-left: 12px;
+    }
+    .about-read-more:hover { background: var(--crimson-deep); }
+
+    .about-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+    .about-body p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #4a3a2a;
+      font-weight: 300;
+    }
+
+    /* ═══════════════════════════════════════════
+       MENU
+    ═══════════════════════════════════════════ */
+    .menu-section {
+      padding: 80px 0;
+      background: var(--off-white);
+    }
+
+    .menu-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 4rem;
+      padding: 0 2.5rem;
+      align-items: start;
+    }
+
+    .menu-image {
+      position: relative;
+      height: 520px;
+      overflow: hidden;
+    }
+    .menu-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .menu-image::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(90,16,16,0.3), transparent 50%);
+    }
+
+    .menu-content {}
+    .menu-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+    }
+    .menu-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 6vw, 5rem);
+      font-weight: 400;
+      line-height: 1;
+      color: var(--dark);
+    }
+    .menu-see-all {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      border: 1px solid var(--text-muted);
+      padding: 6px 16px;
+      text-decoration: none;
+      font-family: 'Cinzel', serif;
+      transition: all 0.3s;
+    }
+    .menu-see-all:hover {
+      border-color: var(--dark);
+      color: var(--dark);
+    }
+
+    .menu-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid rgba(0,0,0,0.12);
+    }
+    .menu-tab {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      padding: 8px 16px 10px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: all 0.3s;
+    }
+    .menu-tab.active {
+      color: var(--crimson);
+      border-bottom-color: var(--crimson);
+    }
+    .menu-tab:hover { color: var(--dark); }
+    .menu-tab + .menu-tab::before {
+      content: '/';
+      margin-right: 16px;
+      color: rgba(0,0,0,0.2);
+    }
+
+    .menu-panel { display: none; }
+    .menu-panel.active { display: block; }
+
+    .menu-item {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+    }
+    .menu-item-left {}
+    .menu-item-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--dark);
+      margin-bottom: 4px;
+    }
+    .menu-item-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 300;
+      font-style: italic;
+    }
+    .menu-item-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--crimson);
+      white-space: nowrap;
+      margin-left: 1rem;
+    }
+
+    /* ═══════════════════════════════════════════
+       GALLERY / AMBIANCE
+    ═══════════════════════════════════════════ */
+    .gallery {
+      padding: 80px 2.5rem;
+      background: var(--dark);
+    }
+
+    .gallery-header {
+      max-width: 1100px;
+      margin: 0 auto 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    .gallery-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,0.4);
+    }
+    .gallery-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 5vw, 4rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--cream);
+      line-height: 1.1;
+    }
+    .gallery-subtitle {
+      font-size: 0.8rem;
+      color: var(--gold);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-family: 'Cinzel', serif;
+    }
+
+    .gallery-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 260px 260px;
+      gap: 12px;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+      display: block;
+    }
+    .gallery-item:hover img { transform: scale(1.06); }
+
+    .gallery-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.5), transparent 50%);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    .gallery-item:hover::after { opacity: 1; }
+
+    .gallery-item--tall { grid-row: span 2; }
+    .gallery-item--wide { grid-column: span 2; }
+
+    /* ═══════════════════════════════════════════
+       EXPERIENCE / HISTORY
+    ═══════════════════════════════════════════ */
+    .experience {
+      padding: 100px 2.5rem;
+      background: var(--off-white);
+    }
+
+    .experience-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .experience-left {}
+    .exp-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .exp-years {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .exp-year {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5vw, 5rem);
+      font-weight: 900;
+      line-height: 1.05;
+      color: rgba(0,0,0,0.12);
+      cursor: pointer;
+      transition: color 0.3s;
+      letter-spacing: -0.02em;
+    }
+    .exp-year.active { color: var(--crimson); }
+    .exp-year:hover { color: rgba(122,26,26,0.5); }
+
+    .experience-right {
+      position: relative;
+    }
+    .exp-image {
+      width: 100%;
+      height: 380px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+    .exp-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .exp-text-block {
+      display: none;
+    }
+    .exp-text-block.active {
+      display: block;
+      animation: fadeIn 0.4s ease;
+    }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    .exp-year-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      color: var(--crimson);
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+    .exp-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--dark);
+      margin-bottom: 0.75rem;
+      line-height: 1.35;
+    }
+    .exp-desc {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: #4a3a2a;
+      font-weight: 300;
+    }
+
+    /* ═══════════════════════════════════════════
+       EVENTS / MOMENTS
+    ═══════════════════════════════════════════ */
+    .events {
+      padding: 80px 2.5rem;
+      background: #f0ebe3;
+    }
+
+    .events-header {
+      max-width: 1100px;
+      margin: 0 auto 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .events-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .events-filters {
+      display: flex;
+      gap: 8px;
+    }
+    .events-filter {
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border: 1px solid rgba(0,0,0,0.2);
+      cursor: pointer;
+      background: none;
+      font-family: 'Cinzel', serif;
+      transition: all 0.3s;
+      color: var(--text-muted);
+    }
+    .events-filter.active, .events-filter:hover {
+      background: var(--crimson);
+      color: var(--cream);
+      border-color: var(--crimson);
+    }
+
+    .events-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .event-card {
+      position: relative;
+      overflow: hidden;
+      height: 280px;
+      cursor: pointer;
+    }
+    .event-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .event-card:hover img { transform: scale(1.05); }
+    .event-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.2) 50%, transparent 100%);
+    }
+    .event-card-content {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 1.5rem;
+      z-index: 1;
+    }
+    .event-tag {
+      display: inline-block;
+      font-size: 0.55rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      background: var(--crimson);
+      color: var(--cream);
+      padding: 3px 10px;
+      font-family: 'Cinzel', serif;
+      margin-bottom: 0.75rem;
+    }
+    .event-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--cream);
+      line-height: 1.3;
+    }
+
+    /* ═══════════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════════ */
+    footer {
+      background: var(--crimson);
+      padding: 60px 2.5rem 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    footer::before {
+      content: 'ONE ROOFTOP';
+      position: absolute;
+      bottom: -20px; right: -20px;
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: 120px;
+      color: rgba(255,255,255,0.04);
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(245,240,232,0.2);
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-brand {}
+    .footer-logo {
+      font-family: 'Cinzel', serif;
+      font-size: 1.6rem;
+      color: var(--cream);
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.05em;
+    }
+    .footer-logo span {
+      display: block;
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      color: rgba(245,240,232,0.5);
+      margin-top: 4px;
+    }
+
+    .footer-book {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 90px; height: 90px;
+      border-radius: 50%;
+      background: var(--cream);
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--crimson-deep);
+      text-decoration: none;
+      text-align: center;
+      font-weight: 500;
+      transition: transform 0.3s;
+    }
+    .footer-book:hover { transform: scale(1.08); }
+
+    .footer-nav h4 {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,0.5);
+      margin-bottom: 1.2rem;
+    }
+    .footer-nav ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .footer-nav a {
+      font-size: 0.9rem;
+      color: rgba(245,240,232,0.8);
+      text-decoration: none;
+      font-weight: 300;
+      transition: color 0.3s;
+    }
+    .footer-nav a:hover { color: var(--gold-light); }
+
+    .footer-contact h4 {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,0.5);
+      margin-bottom: 1.2rem;
+    }
+    .footer-contact p {
+      font-size: 0.9rem;
+      color: rgba(245,240,232,0.8);
+      line-height: 2;
+      font-weight: 300;
+    }
+    .footer-contact a {
+      color: rgba(245,240,232,0.8);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .footer-contact a:hover { color: var(--gold-light); }
+
+    .footer-social {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-top: 1.5rem;
+    }
+    .footer-social a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.75rem;
+      color: rgba(245,240,232,0.6);
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      transition: color 0.3s;
+    }
+    .footer-social a:hover { color: var(--gold-light); }
+    .footer-social-icon {
+      width: 30px; height: 30px;
+      border: 1px solid rgba(245,240,232,0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-copy {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(245,240,232,0.35);
+    }
+
+    /* ═══════════════════════════════════════════
+       ANIMATIONS
+    ═══════════════════════════════════════════ */
+    .hero-photo { animation: heroFadeUp 0.9s ease both; }
+    .hero-photo-1 { animation-delay: 0.1s; }
+    .hero-photo-2 { animation-delay: 0.2s; }
+    .hero-photo-3 { animation-delay: 0.3s; }
+    .hero-photo-thumb { animation-delay: 0.4s; }
+
+    @keyframes heroFadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-title-overlay h1 {
+      animation: titleReveal 1s ease 0.5s both;
+    }
+    @keyframes titleReveal {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ═══════════════════════════════════════════
+       DECORATIVE DIVIDER
+    ═══════════════════════════════════════════ */
+    .divider {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      margin: 1.5rem 0;
+    }
+
+    /* Gold accent line */
+    .gold-line {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 0.75rem;
+    }
+    .gold-line::before {
+      content: '';
+      width: 32px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .gold-line span {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ════════════════════════════════════════
+       NAVIGATION
+  ════════════════════════════════════════ -->
+  <nav>
+    <div class="nav-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </div>
+    <a href="#" class="nav-logo">One <span>Rooftop</span></a>
+    <a href="#footer" class="nav-reservation">Réservation</a>
+  </nav>
+
+
+  <!-- ════════════════════════════════════════
+       HERO
+  ════════════════════════════════════════ -->
+  <section class="hero">
+    <div class="hero-top">
+      <div class="hero-label">
+        BAR &amp; KITCHEN<br>
+        <em>Experience Above All</em>
+      </div>
+      <div class="hero-label" style="text-align:right;">
+        CUISINE<br>ASIATIQUE &amp; EUROPÉENNE
+      </div>
+    </div>
+
+    <div class="hero-center">
+      <div class="hero-collage">
+        <div class="hero-photo hero-photo-1">
+          <img src="sushi/sushi_01.jpg" alt="Ambiance One Rooftop" />
+        </div>
+        <div class="hero-photo hero-photo-2">
+          <img src="nourriture/nourriture_01.jpg" alt="Sushi One Rooftop" />
+        </div>
+        <div class="hero-photo hero-photo-3">
+          <img src="ambiance/ambiance_02.jpg" alt="Terrasse One Rooftop" />
+        </div>
+        <div class="hero-photo hero-photo-thumb">
+          <img src="ambiance/ambiance_15.jpg" alt="Bar One Rooftop" />
+        </div>
+
+        <!-- Overlaid title -->
+        <div class="hero-title-overlay">
+          <h1>
+            One<br>
+            <span class="line2">Rooftop</span>
+          </h1>
+        </div>
+      </div>
+
+      <!-- Book Now button -->
+      <a href="#footer" class="book-now-circle">BOOK<br>NOW</a>
+
+      <!-- EST -->
+      <div class="hero-est">
+        EST<br>SINCE / 2018
+      </div>
+    </div>
+
+    <div class="hero-bottom">
+      <div class="hero-copy">© 2024 / ONE ROOFTOP</div>
+      <div class="hero-lang">
+        FR
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1"/>
+          <path d="M8 1a11 11 0 0 1 0 14M8 1a11 11 0 0 0 0 14M1 8h14" stroke="currentColor" stroke-width="1"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════
+       ABOUT
+  ════════════════════════════════════════ -->
+  <section class="about">
+    <div class="about-inner">
+      <div class="about-label">À PROPOS</div>
+      <div class="about-content reveal">
+        <p class="about-headline">
+          Rejoignez-nous en hauteur et découvrez une expérience culinaire unique,
+          où <strong>saveurs asiatiques et art de vivre européen</strong>
+          se rencontrent sous les étoiles.
+          <a href="#menu" class="about-read-more">En savoir plus</a>
+        </p>
+        <div class="about-body">
+          <p>
+            Niché au sommet de la ville, One Rooftop vous invite dans un univers où chaque table offre une vue imprenable.
+            Notre chef conjugue les meilleurs produits locaux avec des techniques culinaires internationales pour créer
+            une carte qui évolue avec les saisons.
+          </p>
+          <p>
+            Notre bar signature, illuminé par un arbre en fleurs d'or, est le cœur pulsant de One Rooftop.
+            Des cocktails créatifs, une sélection de vins soigneusement choisie, et une atmosphère qui transforme
+            chaque soirée en un moment inoubliable.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════
+       MENU
+  ════════════════════════════════════════ -->
+  <section class="menu-section" id="menu">
+    <div class="menu-inner">
+      <div class="menu-image reveal">
+        <img src="nourriture/nourriture_02.jpg" alt="Bar One Rooftop" />
+      </div>
+
+      <div class="menu-content reveal">
+        <div class="menu-header">
+          <h2 class="menu-title">Menu</h2>
+          <a href="#" class="menu-see-all">Voir tout</a>
+        </div>
+
+        <div class="menu-tabs">
+          <button class="menu-tab active" data-tab="sushi">Sushi</button>
+          <button class="menu-tab" data-tab="small">Petites assiettes</button>
+          <button class="menu-tab" data-tab="grills">Grillades</button>
+          <button class="menu-tab" data-tab="desserts">Desserts</button>
+        </div>
+
+        <!-- SUSHI -->
+        <div class="menu-panel active" id="tab-sushi">
+          <div class="menu-item">
+            <div class="menu-item-left">
+              <div class="menu-item-name">Spicy Tuna Roll</div>
+              <div class="menu-item-desc">Thon, sriracha, mayo épicée, concombre</div>
+            </div>
+            <div class="menu-item-price">XAF 7 500</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-left">
+              <div class="menu-item-name">Prawn Tempura</div>
+              <div class="menu-item-desc">Crevettes tempura, avocat, fromage crémeux</div>
+            </div>
+            <div class="menu-item-price">XAF 7 500</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-left">
+              <div class="menu-item-name">Spicy Salmon Roll</div>
+              <div class="menu-item-desc">Saumon, kimchi, tobiko, mayo épicée</div>
+            </div>
+            <div class="menu-item-price">XAF 16 500</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-left">
+              <div class="menu-item-name">Dragon Roll</div>
+              <div class="menu-item-desc">Anguille grillée, avocat, sauce teriyaki</div>
+            </div>
+            <div class="menu-item-price">XAF 16 500</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-left">
+              <div class="menu-item-name">Lobster Tempura</div>
+              <div class="menu-item-desc">Homard, avocat, fromage crémeux, masago, mayo</div>
+            </div>
+            <div class="menu-item-price">XAF 16 500</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-left">
+              <div class="menu-item-name">Sashimi du Jour</div>
+              <div class="menu-item-desc">Demandez à votre serveur</div>
+            </div>
+            <div class="menu-item-price">XAF 12 500</div>
+          </div>
+        </div>
+
+        <!-- SMALL PLATES -->
+        <div class="menu-panel" id="tab-small">
+          <div class="menu-item">
+            <div class="menu-item-left">
+              <div class="menu-item-name">The Money Bag</div>
+              <div class="menu-item-desc">Fromage, poulet, noix de cajou, sauce tamarin</div>
+            </div>
+            <div class="menu-item-price">XAF 9 000</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-left">
+              <div class="menu-item-name">Duck Spring Rolls</div>
+              <div class="menu-item-desc">Canard croustillant, sauce hoisin, oignon de printemps</div>
+            </div>
+            <div class="menu-item-price">XAF 12 000</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-left">
+              <div class="menu-item-name">Dynamite Chicken Pops</div>
+              <div class="menu-item-desc">Poulet croustillant, mayo sriracha</div>
+            </div>
+            <div class="menu-item-price">XAF 9 000</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-left">
+              <div class="menu-item-name">Wasabi Prawns</div>
+              <div class="menu-item-desc">Crevettes croustillantes, mayo wasabi crémeuse</div>
+            </div>
+            <div class="menu-item-price">XAF 9 000</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-left">
+              <div class="menu-item-name">One Rooftop Chicken Bun</div>
+              <div class="menu-item-desc">Bao vapeur, poulet, sauce barbecue</div>
+            </div>
+            <div class="menu-item-price">XAF 7 500</div>
+          </div>
+        </div>
+
+        <!-- GRILLS -->
+        <div class="menu-panel" id="tab-grills">
+          <div class="menu-item">
+            <div class="menu-item-left">
+              <div class="menu-item-name">Black Angus Sirloin 350g</div>
+              <div class="menu-item-desc">Faux-filet, beurre maître d'hôtel, jus de viande</div>
+            </div>
+            <div class="menu-item-price">XAF 30 000</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-left">
+              <div class="menu-item-name">Spicy Grilled Chicken</div>
+              <div class="menu-item-desc">Marinade poivre noir, sauce coriandre</div>
+            </div>
+            <div class="menu-item-price">XAF 13 500</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-left">
+              <div class="menu-item-name">Lobster Thermidor</div>
+              <div class="menu-item-desc">Homard grillé, sauce thermidor, beurre truffe</div>
+            </div>
+            <div class="menu-item-price">XAF 45 000</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-left">
+              <div class="menu-item-name">The One Rooftop Classic Burger</div>
+              <div class="menu-item-desc">Bœuf Angus, smashed bacon, pickles, sauce maison</div>
+            </div>
+            <div class="menu-item-price">XAF 9 500</div>
+          </div>
+        </div>
+
+        <!-- DESSERTS -->
+        <div class="menu-panel" id="tab-desserts">
+          <div class="menu-item">
+            <div class="menu-item-left">
+              <div class="menu-item-name">Mousse au Chocolat</div>
+              <div class="menu-item-desc">Chocolat noir, crème fouettée</div>
+            </div>
+            <div class="menu-item-price">XAF 4 500</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-left">
+              <div class="menu-item-name">Tiramisu</div>
+              <div class="menu-item-desc">Mascarpone, espresso, cacao en poudre</div>
+            </div>
+            <div class="menu-item-price">XAF 4 500</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-left">
+              <div class="menu-item-name">Crème Brûlée</div>
+              <div class="menu-item-desc">Vanille de Madagascar, caramel craquant</div>
+            </div>
+            <div class="menu-item-price">XAF 4 500</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-left">
+              <div class="menu-item-name">Charlotte</div>
+              <div class="menu-item-desc">Biscuits à la cuillère, crème mousseuse, fruits rouges</div>
+            </div>
+            <div class="menu-item-price">XAF 5 000</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════
+       GALLERY
+  ════════════════════════════════════════ -->
+  <section class="gallery">
+    <div class="gallery-header reveal">
+      <div>
+        <div class="gallery-label">NOS ESPACES</div>
+        <h2 class="gallery-title">L'Ambiance<br>One Rooftop</h2>
+      </div>
+      <div class="gallery-subtitle">Bar · Terrasse · Sushi Bar</div>
+    </div>
+
+    <div class="gallery-grid">
+      <div class="gallery-item gallery-item--tall reveal">
+        <img src="ambiance/ambiance_02.jpg" alt="Terrasse panoramique" />
+      </div>
+      <div class="gallery-item reveal" style="animation-delay:0.1s">
+        <img src="sushi/sushi_01.jpg" alt="Sushi bar" />
+      </div>
+      <div class="gallery-item reveal" style="animation-delay:0.15s">
+        <img src="ambiance/ambiance_15.jpg" alt="Cocktail bar" />
+      </div>
+      <div class="gallery-item gallery-item--tall reveal" style="animation-delay:0.2s">
+        <img src="nourriture/nourriture_02.jpg" alt="Bar intérieur" />
+      </div>
+      <div class="gallery-item reveal" style="animation-delay:0.25s">
+        <img src="nourriture/nourriture_01.jpg" alt="Sushi assortiment" />
+      </div>
+      <div class="gallery-item reveal" style="animation-delay:0.3s">
+        <img src="ambiance/ambiance_01.jpg" alt="Crème brûlée" />
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════
+       EXPERIENCE / HIGHLIGHTS
+  ════════════════════════════════════════ -->
+  <section class="experience">
+    <div class="experience-inner">
+      <div class="experience-left reveal">
+        <div class="exp-label">NOTRE HISTOIRE</div>
+        <div class="exp-years">
+          <div class="exp-year" data-year="2018">2018</div>
+          <div class="exp-year active" data-year="2020">2020</div>
+          <div class="exp-year" data-year="2022">2022</div>
+          <div class="exp-year" data-year="2024">2024</div>
+        </div>
+      </div>
+
+      <div class="experience-right reveal">
+        <div class="exp-image">
+          <img src="ambiance/ambiance_35.jpg" alt="Expérience One Rooftop" />
+        </div>
+
+        <div class="exp-text-block" data-year="2018">
+          <div class="exp-year-label">2018 — Les Débuts</div>
+          <h3 class="exp-heading">Naissance d'une vision au sommet</h3>
+          <p class="exp-desc">One Rooftop ouvre ses portes avec une promesse simple : offrir une expérience gastronomique hors du commun, suspendue au-dessus de la ville.</p>
+        </div>
+        <div class="exp-text-block active" data-year="2020">
+          <div class="exp-year-label">2020 — L'Évolution</div>
+          <h3 class="exp-heading">Le bar signature et l'arbre d'or</h3>
+          <p class="exp-desc">L'installation du bar en onyx et de l'arbre lumineux emblématique transforme One Rooftop en destination incontournable. Notre carte sushi est lancée avec un chef japonais invité.</p>
+        </div>
+        <div class="exp-text-block" data-year="2022">
+          <div class="exp-year-label">2022 — L'Excellence</div>
+          <h3 class="exp-heading">Reconnaissance et expansion du menu</h3>
+          <p class="exp-desc">Notre menu européen est enrichi de coupes de bœuf Black Angus et notre programme d'événements privés prend son envol avec des soirées thématiques hebdomadaires.</p>
+        </div>
+        <div class="exp-text-block" data-year="2024">
+          <div class="exp-year-label">2024 — Aujourd'hui</div>
+          <h3 class="exp-heading">One Rooftop, une institution de la ville</h3>
+          <p class="exp-desc">Avec plus de 10 000 expériences partagées, One Rooftop continue d'innover, de surprendre et de célébrer chaque moment passé en hauteur.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════
+       EVENTS / MOMENTS
+  ════════════════════════════════════════ -->
+  <section class="events">
+    <div class="events-header reveal">
+      <div class="events-label">ÉVÉNEMENTS</div>
+      <div class="events-filters">
+        <button class="events-filter active">Tout</button>
+        <button class="events-filter">Soirées</button>
+        <button class="events-filter">Gastronomie</button>
+        <button class="events-filter">Privatisation</button>
+      </div>
+    </div>
+
+    <div class="events-grid">
+      <div class="event-card reveal">
+        <img src="sushi/sushi_01.jpg" alt="Soirée Sushi" />
+        <div class="event-card-content">
+          <div class="event-tag">GASTRONOMIE</div>
+          <div class="event-title">Soirée Dégustation Sushi<br>& Cocktails Japonais</div>
+        </div>
+      </div>
+      <div class="event-card reveal" style="animation-delay:0.1s">
+        <img src="ambiance/ambiance_15.jpg" alt="Soirée cocktails" />
+        <div class="event-card-content">
+          <div class="event-tag">SOIRÉE</div>
+          <div class="event-title">Friday Night Cocktails<br>Musique Live au Bar</div>
+        </div>
+      </div>
+      <div class="event-card reveal" style="animation-delay:0.2s">
+        <img src="ambiance/ambiance_02.jpg" alt="Brunch terrasse" />
+        <div class="event-card-content">
+          <div class="event-tag">GASTRONOMIE</div>
+          <div class="event-title">Brunch du Dimanche<br>avec Vue Panoramique</div>
+        </div>
+      </div>
+      <div class="event-card reveal" style="animation-delay:0.3s">
+        <img src="nourriture/nourriture_02.jpg" alt="Privatisation" />
+        <div class="event-card-content">
+          <div class="event-tag">PRIVATISATION</div>
+          <div class="event-title">Réservez One Rooftop<br>pour vos Événements Privés</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════ -->
+  <footer id="footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            One Rooftop
+            <span>BAR &amp; KITCHEN</span>
+          </div>
+          <a href="#" class="footer-book">BOOK<br>NOW</a>
+        </div>
+
+        <div class="footer-nav">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#">Réservation</a></li>
+            <li><a href="#">À propos</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#">Notre Histoire</a></li>
+            <li><a href="#">Événements</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-contact">
+          <h4>Contact</h4>
+          <p>
+            Yaoundé, Cameroun<br>
+            <a href="tel:+237000000000">+237 000 000 000</a><br>
+            <a href="mailto:info@onerooftop.cm">info@onerooftop.cm</a>
+          </p>
+          <div class="footer-social">
+            <a href="#">
+              <span class="footer-social-icon">ig</span>
+              @onerooftop
+            </a>
+            <a href="#">
+              <span class="footer-social-icon">fb</span>
+              One Rooftop
+            </a>
+            <a href="#">
+              <span class="footer-social-icon">wa</span>
+              WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-nav">
+          <h4>Horaires</h4>
+          <ul>
+            <li><a href="#">Lun – Jeu : 12h – 00h</a></li>
+            <li><a href="#">Ven – Sam : 12h – 02h</a></li>
+            <li><a href="#">Dimanche : 11h – 23h</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-copy">© 2024 / ONE ROOFTOP BAR &amp; KITCHEN</div>
+        <div class="footer-copy">Conçu avec passion — au sommet</div>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    // ── Menu tabs ───────────────────────────────────
+    document.querySelectorAll('.menu-tab').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        const tabId = 'tab-' + btn.dataset.tab;
+        document.getElementById(tabId).classList.add('active');
+      });
+    });
+
+    // ── Experience timeline ─────────────────────────
+    document.querySelectorAll('.exp-year').forEach(yr => {
+      yr.addEventListener('click', () => {
+        document.querySelectorAll('.exp-year').forEach(y => y.classList.remove('active'));
+        document.querySelectorAll('.exp-text-block').forEach(b => b.classList.remove('active'));
+        yr.classList.add('active');
+        const year = yr.dataset.year;
+        document.querySelector(`.exp-text-block[data-year="${year}"]`).classList.add('active');
+      });
+    });
+
+    // ── Event filters ───────────────────────────────
+    document.querySelectorAll('.events-filter').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.events-filter').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+
+    // ── Scroll reveal ───────────────────────────────
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // ── Nav scroll effect ───────────────────────────
+    const navEl = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 60) {
+        navEl.style.borderBottomColor = 'rgba(200,151,74,0.35)';
+      } else {
+        navEl.style.borderBottomColor = 'rgba(200,151,74,0.2)';
+      }
+    });
+  </script>
+</body>
+</html>
